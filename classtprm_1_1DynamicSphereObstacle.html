@@ -98,6 +98,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af452194091131e4afd50fcc1fe47fdc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classtprm_1_1DynamicSphereObstacle.html#af452194091131e4afd50fcc1fe47fdc3">More...</a><br /></td></tr>
 <tr class="separator:af452194091131e4afd50fcc1fe47fdc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bd0e7da2b109ed294ecbb5467559d25"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtprm_1_1DynamicSphereObstacle.html#a0bd0e7da2b109ed294ecbb5467559d25">isColliding</a> (const <a class="el" href="namespacetprm.html#ad8e49954c25c4dbe70155932a224260d">Vector3d</a> &amp;point, double &amp;hitFromTime, double &amp;hitToTime) const override</td></tr>
+<tr class="memdesc:a0bd0e7da2b109ed294ecbb5467559d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the obstacle collides with a given position.  <a href="classtprm_1_1DynamicSphereObstacle.html#a0bd0e7da2b109ed294ecbb5467559d25">More...</a><br /></td></tr>
 <tr class="separator:a0bd0e7da2b109ed294ecbb5467559d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classtprm_1_1DynamicObstacle"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classtprm_1_1DynamicObstacle')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classtprm_1_1DynamicObstacle.html">tprm::DynamicObstacle</a></td></tr>
 <tr class="memitem:a002d3248de5a954b1e44ba02a4b94cd6 inherit pub_methods_classtprm_1_1DynamicObstacle"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtprm_1_1DynamicObstacle.html#a002d3248de5a954b1e44ba02a4b94cd6">DynamicObstacle</a> ()=delete</td></tr>
@@ -290,7 +291,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Checks if the obstacle collides with a given position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">position</td><td>The position to check. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hitTimeFrom</td><td>Time when the obstacle starts colliding with the position. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hitTimeTo</td><td>Time when the obstacle stops colliding with the position. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the obstacle collides with the position, false otherwise. </dd></dl>
 
 <p>Implements <a class="el" href="classtprm_1_1DynamicObstacle.html#a743c577bd0fdf505cd7dd182f909cbf0">tprm::DynamicObstacle</a>.</p>
 
@@ -302,7 +312,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Feb 21 2022 15:08:41 for T-PRM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+Generated on Mon Feb 21 2022 15:14:36 for T-PRM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
 </small></address>
 </body>
 </html>
