@@ -118,7 +118,7 @@ struct TemporalGraphEdge {
 struct GraphPathResultEntry {
     /**
      * @brief Constructor.
-     * @param node The node of the entry.
+     * @param node_id The node of the entry.
      * @param time The time at which the node is reached.
      */
     GraphPathResultEntry(int node_id, double time) : node_id(node_id), time(time){};

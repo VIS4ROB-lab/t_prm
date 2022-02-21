@@ -66,12 +66,17 @@ public:
     virtual ~StaticSphereObstacle() = default;
 
     /**
-     * @copydoc StaticObstacle::isColliding(const Vector3d&)
+     * @brief Checks if the obstacle collides with a given position.
+     * @param position The position to check.
+     * @return True if the obstacle collides with the position, false otherwise.
      */
-    virtual bool isColliding(const Vector3d& point) const override;
+    virtual bool isColliding(const Vector3d& position) const override;
 
     /**
-     * @copydoc StaticObstacle::isColliding(const Vector3d&, const Vector3d&)
+     * @brief Checks if the obstacle collides with a line segment.
+     * @param segment_from Start of the line segment.
+     * @param segment_to End of the line segment.
+     * @return True if the obstacle collides with the line segment, false otherwise.
      */
     virtual bool isColliding(const Vector3d& segment_from, const Vector3d& segment_to) const override;
 
@@ -103,7 +108,11 @@ public:
     virtual ~DynamicSphereObstacle() = default;
 
     /**
-     * @copydoc DynamicObstacle::isColliding(const Vector3d&, double&, double&)
+     * @brief Checks if the obstacle collides with a given position.
+     * @param position The position to check.
+     * @param[out] hitTimeFrom Time when the obstacle starts colliding with the position.
+     * @param[out] hitTimeTo Time when the obstacle stops colliding with the position.
+     * @return True if the obstacle collides with the position, false otherwise.
      */
     virtual bool isColliding(const Vector3d& point, double& hitFromTime, double& hitToTime) const override;
 
