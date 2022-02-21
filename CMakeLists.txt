@@ -47,7 +47,7 @@ target_link_libraries(${PROJECT_NAME} Eigen3::Eigen OpenMP::OpenMP_CXX)
 
 add_subdirectory(examples)
 
-option(BUILD_BENCHMARKING "Build benchmarking" ON)
+option(BUILD_BENCHMARKING "Build benchmarking" OFF)
 
 if(${BUILD_BENCHMARKING})
   add_subdirectory(benchmarking)
