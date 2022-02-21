@@ -1,0 +1,27 @@
+# YAML 1.2
+---
+authors: 
+  -
+    affiliation: "Department of Mechanical and Process Engineering, ETH, Zurich, Switzerland"
+    family-names: Busenhart
+    given-names: Matthias
+  -
+    affiliation: "Department of Mechanical and Process Engineering, ETH, Zurich, Switzerland"
+    family-names: Bartolomei
+    given-names: Luca
+  -
+    affiliation: "Department of Mechanical and Process Engineering, University of Haifa, Haifa, Israel"
+    family-names: Mascaro
+    given-names: Ruben
+  -
+    affiliation: "Department of Mechanical and Process Engineering, ETH, Zurich, Switzerland"
+    family-names: Chli
+    given-names: Margarita
+cff-version: "1.1.0"
+keywords: 
+  - "Motion and Path Planning"
+  - "Collision Avoidance"
+message: "If you use this software, please cite it using these metadata."
+repository-code: "https://github.com/VIS4ROB-lab/t_prm.git"
+title: "T-PRM: Temporal Probabilistic Road-Map for Path Planning in Dynamic Environments"
+...

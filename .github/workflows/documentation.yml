@@ -1,0 +1,21 @@
+name: Creates and deploys Documentation
+
+on:
+  push:
+    branches: main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build Documentation
+      uses: mattnotmitt/doxygen-action@v1.2.3
+      with:
+        working-directory: 'docs'
+        doxyfile-path: 'Doxyfile.in'
+    - name: Publishing Documentation
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/html

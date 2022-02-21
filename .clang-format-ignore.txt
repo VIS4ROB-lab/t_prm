@@ -1,0 +1,6 @@
+# build directories
+./build/*
+./cmake-build-*/*
+./.vscode/*
+./.github/*
+./.git/*
