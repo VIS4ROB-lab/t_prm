@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.11)
 
 project(TPRM)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 include(FetchContent)
 macro(fetch what)
     FetchContent_GetProperties("${what}")
@@ -44,5 +46,11 @@ target_link_libraries(${PROJECT_NAME} Eigen3::Eigen OpenMP::OpenMP_CXX)
 
 
 add_subdirectory(examples)
+
+option(BUILD_BENCHMARKING "Build benchmarking" ON)
+
+if(${BUILD_BENCHMARKING})
+  add_subdirectory(benchmarking)
+endif()
 
 # TODO: INSTALL
