@@ -8,7 +8,7 @@ void BasePlannerBenchmark::startMeasurement() {
     m_start_time = std::chrono::high_resolution_clock::now();
 }
 
-BenchmarkResult BasePlannerBenchmark::runBenchmark(Benchmark*, int, int) {
+BenchmarkResult BasePlannerBenchmark::runBenchmark(std::shared_ptr<Benchmark>, int, int) {
     return BenchmarkResult();
 };
 

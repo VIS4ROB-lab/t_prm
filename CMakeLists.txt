@@ -39,7 +39,7 @@ find_package(OpenMP REQUIRED)
 file(GLOB TPRM_SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB TPRM_HEADER_FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
 
-add_library(${PROJECT_NAME} SHARED ${TPRM_SRC_FILES} ${TPRM_HEADER_FILES})
+add_library(${PROJECT_NAME} ${TPRM_SRC_FILES} ${TPRM_HEADER_FILES})
 target_include_directories(${PROJECT_NAME} PUBLIC "include") # TODO: build/install scopes
 
 target_link_libraries(${PROJECT_NAME} Eigen3::Eigen OpenMP::OpenMP_CXX)
