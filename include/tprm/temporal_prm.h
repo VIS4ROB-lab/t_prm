@@ -145,7 +145,7 @@ public:
      * @param timeStart The time at which to start movement at the start position.
      * @return The found path (positions and respective arrival times).
      */
-    std::vector<PathResultEntry> getShortestPath(const Vector3d& start, const Vector3d& goal, double timeStart) const;
+    std::vector<PathResultEntry> getShortestPath(const Vector3d& start, const Vector3d& goal, double timeStart = 0.0) const;
 
 private:
     /**

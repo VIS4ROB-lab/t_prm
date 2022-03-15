@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.11)
 
 project(TPRM)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 include(FetchContent)
 macro(fetch what)
     FetchContent_GetProperties("${what}")
@@ -37,12 +39,24 @@ find_package(OpenMP REQUIRED)
 file(GLOB TPRM_SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB TPRM_HEADER_FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
 
-add_library(${PROJECT_NAME} SHARED ${TPRM_SRC_FILES} ${TPRM_HEADER_FILES})
-target_include_directories(${PROJECT_NAME} PUBLIC "include") # TODO: build/install scopes
+add_library(${PROJECT_NAME} ${TPRM_SRC_FILES} ${TPRM_HEADER_FILES})
+target_include_directories(${PROJECT_NAME} PUBLIC "include")
 
 target_link_libraries(${PROJECT_NAME} Eigen3::Eigen OpenMP::OpenMP_CXX)
 
-
 add_subdirectory(examples)
 
-# TODO: INSTALL
+option(BUILD_BENCHMARKING "Build benchmarking" OFF)
+
+if(${BUILD_BENCHMARKING})
+  add_subdirectory(benchmarking)
+endif()
+
+# Header files
+install(FILES ${TPRM_HEADER_FILES} DESTINATION include)
+
+# Compiled library
+install(TARGETS ${PROJECT_NAME}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib/${PROJECT_NAME})

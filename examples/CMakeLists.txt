@@ -7,5 +7,3 @@ add_executable(dynamic_avoidance dynamic_avoidance.cpp)
 
 target_link_libraries(static_avoidance TPRM)
 target_link_libraries(dynamic_avoidance TPRM)
-
-# TODO: INSTALL
