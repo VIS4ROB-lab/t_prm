@@ -40,10 +40,9 @@ file(GLOB TPRM_SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB TPRM_HEADER_FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
 
 add_library(${PROJECT_NAME} ${TPRM_SRC_FILES} ${TPRM_HEADER_FILES})
-target_include_directories(${PROJECT_NAME} PUBLIC "include") # TODO: build/install scopes
+target_include_directories(${PROJECT_NAME} PUBLIC "include")
 
 target_link_libraries(${PROJECT_NAME} Eigen3::Eigen OpenMP::OpenMP_CXX)
-
 
 add_subdirectory(examples)
 
@@ -53,4 +52,11 @@ if(${BUILD_BENCHMARKING})
   add_subdirectory(benchmarking)
 endif()
 
-# TODO: INSTALL
+# Header files
+install(FILES ${TPRM_HEADER_FILES} DESTINATION include)
+
+# Compiled library
+install(TARGETS ${PROJECT_NAME}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib/${PROJECT_NAME})
