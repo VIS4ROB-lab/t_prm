@@ -1,3 +1,41 @@
+/*********************************************************************
+ *
+ * Software License Agreement (BSD License)
+ *
+ *  Copyright (c) 2022,
+ *  ETH Zurich - V4RL, Department of Mechanical and Process Engineering.
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *   * Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *   * Redistributions in binary form must reproduce the above
+ *     copyright notice, this list of conditions and the following
+ *     disclaimer in the documentation and/or other materials provided
+ *     with the distribution.
+ *   * Neither the name of the institute nor the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ *  POSSIBILITY OF SUCH DAMAGE.
+ *
+ * Authors: Matthias Busenhart
+ *********************************************************************/
+
 #include <benchmarking/OMPLPlanner.h>
 #include <benchmarking/TPRMPlanner.h>
 #include <benchmarking/factory.h>
@@ -5,7 +43,7 @@
 #include <iostream>
 
 void write_info_about_bm(std::shared_ptr<benchmarking::Benchmark> bm) {
-    std::ofstream file("info_about_bm.csv", std::ios::app);
+    std::ofstream file("info_about_bm.txt", std::ios::app);
     file << "==========" << std::endl;
     file << "Benchmark: " << bm->name << std::endl;
     file << "Num. of obstacles: " << bm->circles.size() << std::endl;
@@ -32,18 +70,15 @@ std::shared_ptr<benchmarking::Benchmark> create_basic_bm(int iters) {
 
     // Register benchmarks
     auto b1 = std::make_shared<Benchmark>("Static Obstacles", iters);
-    b1->numNodes = 1300;
+    b1->numNodes = 1300;  // CHANGE HERE (number of T-PRM nodes)
 
     b1->domain_size = 10.;
 
     // Specific
-    b1->rrt_growIterations = 1600;
-    b1->rrt_edge_length = 1.75;
-
-    b1->tprm_max_time = 40.0;
-    b1->tprm_cost_edge_threshold = 1.75;
+    b1->tprm_cost_edge_threshold = 1.75; // CHANGE HERE (edge connection radius of T-PRM)
 
     b1->ompl_path_length_threshold = std::numeric_limits<double>::infinity();
+    b1->ompl_edge_length = 1.0; // CHANGE HERE (edge connection radius of PRM)
     b1->ompl_time_limit = 1.0;
 
     return b1;
@@ -71,9 +106,9 @@ std::vector<std::shared_ptr<benchmarking::Benchmark>> create_more_obstacles_bm(i
 }
 
 int main(int argc, char const* argv[]) {
-    const int NUM_ITERS = 100;  // 100 for real runs, 1 for path print.
+    const int NUM_ITERS = 1;  // 100 for real runs, 1 for path print.
 
-    std::ofstream file("info_about_bm.csv");
+    std::ofstream file("info_about_bm.txt");
     file.close();  // clear the file
 
     srand(42);
@@ -92,10 +127,10 @@ int main(int argc, char const* argv[]) {
     factory.register_result_handler(std::make_shared<ResultHandlerComputingTime>());
     factory.register_result_handler(std::make_shared<ResultHandlerThetaChanges>());
 
-    // Remove for real runs because slow
-    //factory.register_result_handler(std::make_shared<ResultHandlerPathWriter>());
+    // Remove for benchmark runs because slow
+    factory.register_result_handler(std::make_shared<ResultHandlerPathWriter>());
 
-    //factory.register_result_handler(std::make_shared<ResultHandlerAllWriter>());
+    factory.register_result_handler(std::make_shared<ResultHandlerAllWriter>());
 
     // Register benchmarks
     factory.register_benchmarks(create_more_obstacles_bm(NUM_ITERS));
