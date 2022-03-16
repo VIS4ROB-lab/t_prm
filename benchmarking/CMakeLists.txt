@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 project(benchmarking)
 
-find_package(OMPL REQUIRED)
+find_package(ompl REQUIRED)
 
 macro(custom_exec file)
     add_executable(${file} study/${file}.cpp)
