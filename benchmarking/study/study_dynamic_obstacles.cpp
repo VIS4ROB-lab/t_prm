@@ -67,7 +67,7 @@ std::shared_ptr<benchmarking::Benchmark> create_basic_bm(int iters) {
 
     // Register benchmarks
     auto b1 = std::make_shared<Benchmark>("Basic", iters);
-    b1->numNodes = 1300;  // CHANGE HERE (number of nodes of T-PRM)
+    b1->numNodes = 3000;  // TODO: CHANGE HERE (number of nodes of T-PRM)
 
     b1->start = {tprm::Vector3d::Zero()};
     b1->goal = {tprm::Vector3d::Constant(10.)};
@@ -75,10 +75,10 @@ std::shared_ptr<benchmarking::Benchmark> create_basic_bm(int iters) {
     b1->domain_size = 10.;
 
     // Specific
-    b1->tprm_cost_edge_threshold = 1.75;  // CHANGE HERE (edge connection radius of T-PRM)
+    b1->tprm_cost_edge_threshold = 1.75;  // TODO: CHANGE HERE (edge connection radius of T-PRM)
 
     b1->ompl_path_length_threshold = std::numeric_limits<double>::infinity();
-    b1->ompl_edge_length = 1.75;  // CHANGE HERE (edge connection radius of PRM)
+    b1->ompl_edge_length = 1.75;  // TODO: CHANGE HERE (edge connection radius of PRM)
     b1->ompl_time_limit = 1.0;
 
     b1->is_2d = true; // TODO: CHANGE HERE FOR 3D
@@ -91,7 +91,7 @@ std::vector<std::shared_ptr<benchmarking::Benchmark>> create_more_obstacles_bm(i
 
     std::vector<std::shared_ptr<Benchmark>> bms;
 
-    for (int i : {10, 15}) {
+    for (int i : {15}) { // TODO: CHANGE HERE (number of obstacles)
         std::shared_ptr<Benchmark> b1 = create_basic_bm(iters);
 
         b1->name = std::to_string(i);

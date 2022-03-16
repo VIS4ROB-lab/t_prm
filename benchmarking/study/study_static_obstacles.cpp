@@ -71,15 +71,15 @@ std::shared_ptr<benchmarking::Benchmark> create_basic_bm(int iters) {
 
     // Register benchmarks
     auto b1 = std::make_shared<Benchmark>("Static Obstacles", iters);
-    b1->numNodes = 1300;  // CHANGE HERE (number of T-PRM nodes)
+    b1->numNodes = 3000;  // CHANGE HERE (number of T-PRM nodes)
 
     b1->domain_size = 10.;
 
     // Specific
-    b1->tprm_cost_edge_threshold = 1.75;  // CHANGE HERE (edge connection radius of T-PRM)
+    b1->tprm_cost_edge_threshold = 1.75;  // TODO: CHANGE HERE (edge connection radius of T-PRM)
 
     b1->ompl_path_length_threshold = std::numeric_limits<double>::infinity();
-    b1->ompl_edge_length = 1.0;  // CHANGE HERE (edge connection radius of PRM)
+    b1->ompl_edge_length = 1.0;  // TOOD: CHANGE HERE (edge connection radius of PRM)
     b1->ompl_time_limit = 1.0;
 
     b1->is_2d = true; // TODO: CHANGE HERE FOR 3D
@@ -92,7 +92,7 @@ std::vector<std::shared_ptr<benchmarking::Benchmark>> create_more_obstacles_bm(i
 
     std::vector<std::shared_ptr<Benchmark>> bms;
 
-    for (int i : {0, 5, 10, 15, 20}) {
+    for (int i : {20}) { // TODO: CHANGE HERE (number of obstacles)
         auto bm = create_basic_bm(iters);
         bm->name = std::to_string(i);
         for (int j = 0; j < i; j++) {

@@ -328,7 +328,8 @@ def update(frame):
                             frame * DT, ax, colors["ompl_rrt"])
 
     # show legend
-    #ax.legend(loc='upper left')
+    ax.legend(loc='upper left')
+    ax.set_title(f"{frame * DT:.2f}s")
 
     plt.tight_layout()
     print("Done Frame %d" % frame)

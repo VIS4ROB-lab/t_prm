@@ -295,9 +295,9 @@ def update(frame):
     draw_robot(tprm_path_b, ax, colors["tprm"],zorder=7)
 
     # show legend
-    #ax.legend(loc='upper left')
+    ax.legend(loc='upper left')
 
-    #ax.set_title(f"{frame * DT:.2f}s")
+    ax.set_title(f"{frame * DT:.2f}s")
 
     plt.tight_layout()
     return (ln,)
