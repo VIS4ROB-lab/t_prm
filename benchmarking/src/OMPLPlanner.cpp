@@ -243,10 +243,10 @@ BenchmarkResult OMPLPlannerBenchmark::runBenchmark(std::shared_ptr<Benchmark> be
         ompl::base::PlannerPtr planner;
         if (m_planner == "RRTstar") {
             planner = std::make_shared<ompl::geometric::RRTstar>(si);
-            dynamic_cast<ompl::geometric::RRTstar*>(planner.get())->setRange(benchmark->rrt_edge_length);
+            dynamic_cast<ompl::geometric::RRTstar*>(planner.get())->setRange(benchmark->ompl_edge_length);
         } else if (m_planner == "PRM") {
 #ifdef OMPL_USE_EDGE_LENGTH
-            planner = std::make_shared<ompl::geometric::MyPRM>(si, benchmark->rrt_edge_length);
+            planner = std::make_shared<ompl::geometric::MyPRM>(si, benchmark->ompl_edge_length);
 #else
             planner = std::make_shared<ompl::geometric::PRM>(si);
 #endif
@@ -354,10 +354,10 @@ BenchmarkResult OMPLPlannerBenchmark::runBenchmark(std::shared_ptr<Benchmark> be
         ompl::base::PlannerPtr planner;
         if (m_planner == "RRTstar") {
             planner = std::make_shared<ompl::geometric::RRTstar>(si);
-            dynamic_cast<ompl::geometric::RRTstar*>(planner.get())->setRange(benchmark->rrt_edge_length);
+            dynamic_cast<ompl::geometric::RRTstar*>(planner.get())->setRange(benchmark->ompl_edge_length);
         } else if (m_planner == "PRM") {
 #ifdef OMPL_USE_EDGE_LENGTH
-            planner = std::make_shared<ompl::geometric::MyPRM>(si, benchmark->rrt_edge_length);
+            planner = std::make_shared<ompl::geometric::MyPRM>(si, benchmark->ompl_edge_length);
 #else
             planner = std::make_shared<ompl::geometric::PRM>(si);
 #endif
@@ -518,10 +518,10 @@ BenchmarkResult OMPLPlannerBenchmark::runBenchmark(std::shared_ptr<Benchmark> be
             pdef->setOptimizationObjective(getThresholdPathLengthObj(si, benchmark->ompl_path_length_threshold));
             if (m_planner == "RRTstar") {
                 planner = std::make_shared<ompl::geometric::RRTstar>(si);
-                dynamic_cast<ompl::geometric::RRTstar*>(planner.get())->setRange(benchmark->rrt_edge_length);
+                dynamic_cast<ompl::geometric::RRTstar*>(planner.get())->setRange(benchmark->ompl_edge_length);
             } else if (m_planner == "PRM") {
 #ifdef OMPL_USE_EDGE_LENGTH
-                planner = std::make_shared<ompl::geometric::MyPRM>(si, benchmark->rrt_edge_length);
+                planner = std::make_shared<ompl::geometric::MyPRM>(si, benchmark->ompl_edge_length);
 #else
 
                 planner = std::make_shared<ompl::geometric::PRM>(si);
