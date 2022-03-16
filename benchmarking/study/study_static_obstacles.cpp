@@ -51,7 +51,8 @@ void write_info_about_bm(std::shared_ptr<benchmarking::Benchmark> bm) {
     file << "Num. of runs: " << bm->numRuns() << std::endl;
     file << "OBSTACLES:" << std::endl;
     for (size_t i = 0; i < bm->circles.size(); ++i) {
-        file << "  " << bm->circles[i].center.x() << ", " << bm->circles[i].center.y() << ", " << bm->circles[i].radius << std::endl;
+        file << "  " << bm->circles[i].center.x() << ", " << bm->circles[i].center.y() << ", " << bm->circles[i].center.z() << ", " << bm->circles[i].radius
+             << std::endl;
     }
     file << "QUERIES:" << std::endl;
     for (size_t i = 0; i < bm->start.size(); ++i) {
@@ -75,10 +76,10 @@ std::shared_ptr<benchmarking::Benchmark> create_basic_bm(int iters) {
     b1->domain_size = 10.;
 
     // Specific
-    b1->tprm_cost_edge_threshold = 1.75; // CHANGE HERE (edge connection radius of T-PRM)
+    b1->tprm_cost_edge_threshold = 1.75;  // CHANGE HERE (edge connection radius of T-PRM)
 
     b1->ompl_path_length_threshold = std::numeric_limits<double>::infinity();
-    b1->ompl_edge_length = 1.0; // CHANGE HERE (edge connection radius of PRM)
+    b1->ompl_edge_length = 1.0;  // CHANGE HERE (edge connection radius of PRM)
     b1->ompl_time_limit = 1.0;
 
     return b1;

@@ -199,7 +199,7 @@ def find_all_intermediate_paths_for(planner):
     return ret
 
 
-full_tprm = read_path("path_T-PRM A-star_0_0_0.path")
+full_tprm = read_path("path_T-PRM_0_0_0.path")
 full_ompl_rrt = read_path("path_OMPL RRTstar_0_0_0.path")
 full_ompl_prm = read_path("path_OMPL PRM_0_0_0.path")
 

@@ -51,8 +51,9 @@ void write_info_about_bm(std::shared_ptr<benchmarking::Benchmark> bm) {
     file << "Num. of runs: " << bm->numRuns() << std::endl;
     file << "OBSTACLES:" << std::endl;
     for (size_t i = 0; i < bm->moving_circles.size(); ++i) {
-        file << "  " << bm->moving_circles[i].center.x() << ", " << bm->moving_circles[i].center.y() << ", " << bm->moving_circles[i].radius << ", "
-             << bm->moving_circles[i].velocity.x() << ", " << bm->moving_circles[i].velocity.y() << std::endl;
+        file << "  " << bm->moving_circles[i].center.x() << ", " << bm->moving_circles[i].center.y() << ", " << bm->moving_circles[i].center.z() << ", "
+             << bm->moving_circles[i].radius << ", " << bm->moving_circles[i].velocity.x() << ", " << bm->moving_circles[i].velocity.y() << ", "
+             << bm->moving_circles[i].velocity.z() << std::endl;
     }
     file << "QUERIES:" << std::endl;
     for (size_t i = 0; i < bm->start.size(); ++i) {
@@ -66,7 +67,7 @@ std::shared_ptr<benchmarking::Benchmark> create_basic_bm(int iters) {
 
     // Register benchmarks
     auto b1 = std::make_shared<Benchmark>("Basic", iters);
-    b1->numNodes = 1300; // CHANGE HERE (number of nodes of T-PRM)
+    b1->numNodes = 1300;  // CHANGE HERE (number of nodes of T-PRM)
 
     b1->start = {tprm::Vector3d::Zero()};
     b1->goal = {tprm::Vector3d::Constant(10.)};
@@ -74,10 +75,10 @@ std::shared_ptr<benchmarking::Benchmark> create_basic_bm(int iters) {
     b1->domain_size = 10.;
 
     // Specific
-    b1->tprm_cost_edge_threshold = 1.75; // CHANGE HERE (edge connection radius of T-PRM)
+    b1->tprm_cost_edge_threshold = 1.75;  // CHANGE HERE (edge connection radius of T-PRM)
 
     b1->ompl_path_length_threshold = std::numeric_limits<double>::infinity();
-    b1->ompl_edge_length = 1.75; // CHANGE HERE (edge connection radius of PRM)
+    b1->ompl_edge_length = 1.75;  // CHANGE HERE (edge connection radius of PRM)
     b1->ompl_time_limit = 1.0;
 
     return b1;
@@ -131,7 +132,7 @@ int main(int argc, char const* argv[]) {
 
     // Remove for benchmark runs because slow
     factory.register_result_handler(std::make_shared<ResultHandlerPathWriter>());
-    
+
     factory.register_result_handler(std::make_shared<ResultHandlerAllWriter>());
 
     // Register benchmarks
