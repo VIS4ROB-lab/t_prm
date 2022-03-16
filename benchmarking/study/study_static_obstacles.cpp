@@ -82,6 +82,8 @@ std::shared_ptr<benchmarking::Benchmark> create_basic_bm(int iters) {
     b1->ompl_edge_length = 1.0;  // CHANGE HERE (edge connection radius of PRM)
     b1->ompl_time_limit = 1.0;
 
+    b1->is_2d = true; // TODO: CHANGE HERE FOR 3D
+
     return b1;
 }
 
