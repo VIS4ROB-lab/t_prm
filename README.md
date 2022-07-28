@@ -1,6 +1,6 @@
 # T-PRM: Temporal Probabilistic Roadmap for Path Planning in Dynamic Environments 
 This repository contains the source code for the T-PRM algorithm for path planning in dynamic environments.
-If you use this code in your academic work, please cite ([PDF](https://www.research-collection.ethz.ch/handle/20.500.11850/560560)):
+If you use this code in your academic work, please cite ([PDF](https://www.research-collection.ethz.ch/handle/20.500.11850/560560), [Video](https://youtu.be/Eh6brn_dVlU)):
 
     @inproceedings{hueppi2022tprm,
       title={T-PRM: Temporal Probabilistic Roadmap for Path Planning in Dynamic Environments},
@@ -12,9 +12,6 @@ If you use this code in your academic work, please cite ([PDF](https://www.resea
 > **Abstract**: Sampling-based motion planners are widely used in robotics due to their simplicity, flexibility and computational efficiency. However, in their most basic form, these algorithms operate under the assumption of static scenes and lack the ability to avoid collisions with dynamic (i.e. moving) obstacles. This raises safety concerns, limiting the range of possible applications of mobile robots in the real world. Motivated by these challenges, in this work we present Temporal-PRM, a novel sampling-based path-planning algorithm that performs obstacle avoidance in dynamic environments. The proposed approach extends the original Probabilistic Roadmap (PRM) with the notion of time, generating an augmented graph-like structure that can be efficiently queried using a time-aware variant of the A* search algorithm, also introduced in this paper. Our design maintains all the properties of PRM, such as the ability to perform multiple queries and to find smooth paths, while circumventing its downside by enabling collision avoidance in highly dynamic scenes with a minor increase in the computational cost. Through a series of challenging experiments in highly cluttered and dynamic environments, we demonstrate that the proposed path planner outperforms other state-of-the-art sampling-based solvers. Moreover, we show that our algorithm can run onboard a flying robot, performing obstacle avoidance in real time.
 
 This project is released under a GPLv3 license.
-
-## Video
-<a href="https://youtu.be/Eh6brn_dVlU" target="_blank"><img src="https://youtu.be/Eh6brn_dVlU/0.jpg" alt="Mesh" width="240" height="180" border="10" /></a>
 
 ## Dependencies
 The code has been tested under Ubuntu 20.04 and does not have any special dependency. 
