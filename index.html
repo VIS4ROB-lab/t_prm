@@ -73,7 +73,7 @@ $(function() {
   <div class="headertitle"><div class="title">T-PRM: Temporal Probabilistic Roadmap for Path Planning in Dynamic Environments </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md__github_workspace_README"></a>This repository contains the source code for the T-PRM algorithm for path planning in dynamic environments. If you use this code in your academic work, please cite (<a href="https://www.research-collection.ethz.ch/handle/20.500.11850/560560">PDF</a>): </p><pre class="fragment">@inproceedings{hueppi2022tprm,
+<div class="textblock"><p ><a class="anchor" id="md__github_workspace_README"></a>This repository contains the source code for the T-PRM algorithm for path planning in dynamic environments. If you use this code in your academic work, please cite (<a href="https://www.research-collection.ethz.ch/handle/20.500.11850/560560">PDF</a>, <a href="https://youtu.be/Eh6brn_dVlU">Video</a>): </p><pre class="fragment">@inproceedings{hueppi2022tprm,
   title={T-PRM: Temporal Probabilistic Roadmap for Path Planning in Dynamic Environments},
   author={Hüppi, Matthias and Bartolomei, Luca and Mascaro, Ruben and Chli, Margarita},
   booktitle={2022 {IEEE/RSJ} International Conference on Intelligent Robots and Systems ({IROS})},
@@ -84,22 +84,19 @@ $(function() {
 </blockquote>
 <p>This project is released under a GPLv3 license.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Video</h1>
-<p ><a href="https://youtu.be/Eh6brn_dVlU" target="_blank"><img src="https://youtu.be/Eh6brn_dVlU/0.jpg" alt="Mesh" width="240" height="180" border="10" class="inline"/></a></p>
-<h1><a class="anchor" id="autotoc_md2"></a>
 Dependencies</h1>
 <p >The code has been tested under Ubuntu 20.04 and does not have any special dependency.</p>
 <p >However, in order to run the benchmarks against OMPL, this library needs to be installed:</p><ul>
 <li>If you have ROS installed, run <code>sudo apt install ros-noetic-ompl</code>;</li>
 <li>Otherwise run <code>sudo apt install libompl-dev</code>.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Compiling</h1>
 <p >To compile the T-PRM library, execute the following steps: 1) Clone this repository: <code>git clone git@github.com:VIS4ROB-lab/t_prm.git</code> 2) Create a build folder: <code>mkdir build</code> 3) Navigate to the build folder: <code>cd build</code> 4) Execute cmake: <code>cmake ..</code> 5) Compile with make: <code>make</code></p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Running Benchmarks</h1>
 <p >In order to run the benchmarks, check out the [instructions](benchmarking) in the <code>benchmarking</code> folder. To generate movies out of the benchmarks, check the folder <a href="benchmarking/scripts">benchmarking/scripts</a>.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Example</h1>
 <p >The [examples](examples) folder contains examples on how to use the library. Here, we report the main instructions to run T-PRM with one dynamic obstacle moving in the space:</p><ol type="1">
 <li>Necessary includes: <div class="fragment"><div class="line">{c++}</div>
@@ -135,7 +132,7 @@ Example</h1>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 28 2022 07:08:37 for T-PRM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Thu Jul 28 2022 07:12:57 for T-PRM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>
