@@ -94,45 +94,38 @@ Dependencies</h1>
 Compiling</h1>
 <p >To compile the T-PRM library, execute the following steps: 1) Clone this repository: <code>git clone git@github.com:VIS4ROB-lab/t_prm.git</code> 2) Create a build folder: <code>mkdir build</code> 3) Navigate to the build folder: <code>cd build</code> 4) Execute cmake: <code>cmake ..</code> 5) Compile with make: <code>make</code></p>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Running Benchmarks</h1>
-<p >In order to run the benchmarks, check out the [instructions](benchmarking) in the <code>benchmarking</code> folder. To generate movies out of the benchmarks, check the folder <a href="benchmarking/scripts">benchmarking/scripts</a>.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
 Example</h1>
-<p >The [examples](examples) folder contains examples on how to use the library. Here, we report the main instructions to run T-PRM with one dynamic obstacle moving in the space:</p><ol type="1">
-<li>Necessary includes: <div class="fragment"><div class="line">{c++}</div>
-<div class="line">   #include &lt;tprm/obstacle_impl.h&gt;</div>
-<div class="line">   #include &lt;tprm/temporal_prm.h&gt;</div>
+<p >The [examples](examples) folder contains examples on how to use the library, but we strongly suggest to refer to the <a href="https://vis4rob-lab.github.io/t_prm">documentation</a>. Here, we report the main instructions to run T-PRM with one dynamic obstacle moving in the space:</p><ol type="1">
+<li>Necessary includes: <div class="fragment"><div class="line">#include &lt;tprm/obstacle_impl.h&gt;</div>
+<div class="line">#include &lt;tprm/temporal_prm.h&gt;</div>
 </div><!-- fragment --></li>
-<li>Set the (holonomic) robot speed to a desired value: <div class="fragment"><div class="line">{c++}</div>
-<div class="line">   tprm::HolonomicRobot::movement_speed = 0.1;  // m/s</div>
+<li>Set the (holonomic) robot speed to a desired value: <div class="fragment"><div class="line">tprm::HolonomicRobot::movement_speed = 0.1;  // m/s</div>
 </div><!-- fragment --></li>
-<li>Create the main T-PRM object: <div class="fragment"><div class="line">{c++}</div>
-<div class="line">   tprm::TemporalPRM tprm;</div>
+<li>Create the main T-PRM object: <div class="fragment"><div class="line">tprm::TemporalPRM tprm;</div>
 </div><!-- fragment --></li>
-<li>Add a dynamic obstacle. In this case, the obstacle with dimension <code>0.25 m</code> is spawned at <code>(1, 1, 1)</code> and moves towards <code>(0, 0, 0)</code> with a velocity vector <code>(-0.1, -0.1, -0.1)</code>: <div class="fragment"><div class="line">{c++}</div>
-<div class="line">   tprm.addDynamicObstacle(std::make_shared&lt;tprm::DynamicSphereObstacle&gt;(tprm::Vector3d::Constant(1.), tprm::Vector3d::Constant(-0.1), 0.25));</div>
+<li>Add a dynamic obstacle. In this case, the obstacle with dimension <code>0.25 m</code> is spawned at <code>(1, 1, 1)</code> and moves towards <code>(0, 0, 0)</code> with a velocity vector <code>(-0.1, -0.1, -0.1)</code>: <div class="fragment"><div class="line">tprm.addDynamicObstacle(std::make_shared&lt;tprm::DynamicSphereObstacle&gt;(tprm::Vector3d::Constant(1.), tprm::Vector3d::Constant(-0.1), 0.25));</div>
 </div><!-- fragment --></li>
-<li>Sample the space (<code>150</code> samples) and create the roadmap with a maximum edge length of <code>0.25 m</code>: <div class="fragment"><div class="line">{c++}</div>
-<div class="line">   tprm.placeSamples(150);</div>
-<div class="line">   tprm.buildPRM(0.25);</div>
+<li>Sample the space (<code>150</code> samples) and create the roadmap with a maximum edge length of <code>0.25 m</code>: <div class="fragment"><div class="line">tprm.placeSamples(150);</div>
+<div class="line">tprm.buildPRM(0.25);</div>
 </div><!-- fragment --></li>
-<li>Query the roadmap for a path from <code>(0, 0, 0)</code> to <code>(1, 1, 1)</code> starting at time <code>0.5 s</code>: <div class="fragment"><div class="line">{c++}</div>
-<div class="line">   auto path = tprm.getShortestPath(tprm::Vector3d(0, 0, 0), tprm::Vector3d(1., 1., 1.), 0.5);</div>
+<li>Query the roadmap for a path from <code>(0, 0, 0)</code> to <code>(1, 1, 1)</code> starting at time <code>0.5 s</code>: <div class="fragment"><div class="line">auto path = tprm.getShortestPath(tprm::Vector3d(0, 0, 0), tprm::Vector3d(1., 1., 1.), 0.5);</div>
 </div><!-- fragment --></li>
-<li>Print the result: <div class="fragment"><div class="line">{c++}</div>
-<div class="line">   if (path.empty()) {</div>
-<div class="line">       std::cout &lt;&lt; &quot;No path found&quot; &lt;&lt; std::endl;</div>
-<div class="line">   } else {</div>
-<div class="line">       for (auto&amp; node : path)</div>
-<div class="line">           std::cout &lt;&lt; &quot;Node: &quot; &lt;&lt; node.position.transpose() &lt;&lt; &quot; at time &quot; &lt;&lt; node.time &lt;&lt; std::endl;</div>
-<div class="line">   }</div>
-</div><!-- fragment --> </li>
+<li>Print the result: <div class="fragment"><div class="line">if (path.empty()) {</div>
+<div class="line">    std::cout &lt;&lt; &quot;No path found&quot; &lt;&lt; std::endl;</div>
+<div class="line">} else {</div>
+<div class="line">    for (auto&amp; node : path)</div>
+<div class="line">        std::cout &lt;&lt; &quot;Node: &quot; &lt;&lt; node.position.transpose() &lt;&lt; &quot; at time &quot; &lt;&lt; node.time &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
 </ol>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Running Benchmarks</h1>
+<p >In order to run the benchmarks, check out the [instructions](benchmarking) in the <code>benchmarking</code> folder. To generate movies out of the benchmarks, check the folder <a href="benchmarking/scripts">benchmarking/scripts</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 28 2022 07:12:57 for T-PRM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Thu Jul 28 2022 10:58:25 for T-PRM by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>
