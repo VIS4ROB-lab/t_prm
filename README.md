@@ -14,11 +14,12 @@ If you use this code in your academic work, please cite ([PDF](https://www.resea
 This project is released under a GPLv3 license.
 
 ## Video
-<a href="https://www.youtube.com/watch?v=Eh6brn_dVlU" target="_blank"><img src="https://www.youtube.com/watch?v=Eh6brn_dVlU/0.jpg" alt="Mesh" width="240" height="180" border="10" /></a>
+<a href="https://youtu.be/Eh6brn_dVlU" target="_blank"><img src="https://youtu.be/Eh6brn_dVlU/0.jpg" alt="Mesh" width="240" height="180" border="10" /></a>
 
 ## Dependencies
 The code has been tested under Ubuntu 20.04 and does not have any special dependency. 
-However, in order to run the benchmarks against OMPL, this library needs to be installed as well:
+
+However, in order to run the benchmarks against OMPL, this library needs to be installed:
 - If you have ROS installed, run `sudo apt install ros-noetic-ompl`;
 - Otherwise run `sudo apt install libompl-dev`.
 
